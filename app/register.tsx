@@ -4,6 +4,7 @@ import { useRouter } from 'expo-router';
 import { register } from '../api'; // API'deki register fonksiyonunu import ediyoruz
 
 const Register = () => {
+  const [name, setName] = useState(''); // Yeni eklenen alan
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const router = useRouter(); // Sayfalar arası yönlendirme
@@ -11,7 +12,7 @@ const Register = () => {
   const handleRegister = async () => {
     try {
       // Backend API'ye register isteği gönderiyoruz
-      await register(email, password);
+      await register(name, email, password);
 
       Alert.alert('Kayıt Başarılı', 'Hesabınız oluşturuldu!');
 
@@ -26,6 +27,15 @@ const Register = () => {
   return (
     <SafeAreaView className="flex-1 justify-center bg-gray-800 p-5">
       <View className="flex-1 justify-center items-center">
+        
+        {/* Name Input */}
+        <TextInput
+          placeholder="İsim"
+          value={name}
+          onChangeText={setName}
+          className="w-full p-4 mb-4 bg-gray-700 text-white rounded-lg"
+        />
+
         {/* Email Input */}
         <TextInput
           placeholder="Email"
@@ -36,7 +46,7 @@ const Register = () => {
         
         {/* Password Input */}
         <TextInput
-          placeholder="Password"
+          placeholder="Şifre"
           secureTextEntry
           value={password}
           onChangeText={setPassword}
@@ -48,12 +58,12 @@ const Register = () => {
           onPress={handleRegister}
           className="w-full bg-green-500 py-3 rounded-lg mb-4"
         >
-          <Text className="text-white text-center font-semibold text-lg">Register</Text>
+          <Text className="text-white text-center font-semibold text-lg">Kayıt Ol</Text>
         </TouchableOpacity>
 
         {/* Login Button */}
         <TouchableOpacity onPress={() => router.push('/login')} className="mt-4">
-          <Text className="text-blue-400 text-center font-semibold">Already have an account? Log In</Text>
+          <Text className="text-blue-400 text-center font-semibold">Zaten hesabınız var mı? Giriş Yap</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

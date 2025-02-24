@@ -11,9 +11,10 @@ const api = axios.create({
 });
 
 // Register function
-export const register = async (email: string, password: string) => {
+
+export const register = async (name: string, email: string, password: string) => {
   try {
-    const response = await api.post("/auth/register", { email, password });
+    const response = await api.post("/auth/register", { name, email, password });
     return response.data;
   } catch (error) {
     console.error("Register Error:", error);
@@ -21,23 +22,29 @@ export const register = async (email: string, password: string) => {
   }
 };
 
+
 // Login function
+
 export const login = async (email: string, password: string) => {
   try {
     const response = await api.post("/auth/login", { email, password });
-    const { token } = response.data;
+    const { token, userName } = response.data;
 
-    // Token'ı AsyncStorage'a kaydediyoruz
+    // Token'ı ve kullanıcı adını AsyncStorage'a kaydet
     if (token) {
       await AsyncStorage.setItem('userToken', token);
     }
+    if (userName) {
+      await AsyncStorage.setItem('userName', userName);
+    }
 
-    return response.data; // Token'ı döndürür
+    return response.data; 
   } catch (error) {
     console.error("Login Error:", error);
     throw error;
   }
 };
+
 
 // Logout function
 export const logout = async () => {
@@ -50,5 +57,17 @@ export const logout = async () => {
     throw error;
   }
 };
+
+// Not özetleme fonksiyonu
+export const summarizeNote = async (note: string) => {
+  try {
+    const response = await api.post("/notes/summarize", { note });
+    return response.data;
+  } catch (error) {
+    console.error("Summarization Error:", error);
+    throw error;
+  }
+};
+
 
 export default api;
