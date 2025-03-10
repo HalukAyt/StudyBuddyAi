@@ -59,26 +59,27 @@ const MainMenu: React.FC<MainMenuProps> = ({ navigation }) => {
 
         {/* Menü Seçenekleri */}
         <View className="space-y-6">
-          <TouchableOpacity className="bg-blue-500 rounded-lg py-5 flex-row items-center justify-center" onPress={() => navigation.navigate('StudyPlan')}>
+          <TouchableOpacity className="bg-blue-500 rounded-lg py-5 flex-row items-center justify-center mb-10" onPress={() => navigation.navigate('StudyPlan')}>
             <Image source={studyIcon} className="w-6 h-6 mr-3" resizeMode="contain" />
             <Text className="text-white text-lg font-semibold">Çalışma Planı</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity className="bg-green-500 rounded-lg py-5 flex-row items-center justify-center" onPress={() => navigation.navigate('index')}>
+          <TouchableOpacity className="bg-green-500 rounded-lg py-5 flex-row items-center justify-center mb-10" onPress={() => navigation.navigate('index')}>
             <Image source={notesIcon} className="w-6 h-6 mr-3" resizeMode="contain" />
             <Text className="text-white text-lg font-semibold">Not Özetleme</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity className="bg-yellow-500 rounded-lg py-5 flex-row items-center justify-center" onPress={() => navigation.navigate('QuizFlashcards')}>
+          <TouchableOpacity className="bg-yellow-500 rounded-lg py-5 flex-row items-center justify-center mb-10" onPress={() => navigation.navigate('QuizFlashcards')}>
             <Image source={quizIcon} className="w-6 h-6 mr-3" resizeMode="contain" />
             <Text className="text-white text-lg font-semibold">Quiz & Flashcard</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity className="bg-gray-600 rounded-lg py-5 flex-row items-center justify-center" onPress={() => navigation.navigate('Settings')}>
+          <TouchableOpacity className="bg-gray-600 rounded-lg py-5 flex-row items-center justify-center mb-10" onPress={() => navigation.navigate('Settings')}>
             <Image source={settingsIcon} className="w-6 h-6 mr-3" resizeMode="contain" />
             <Text className="text-white text-lg font-semibold">Ayarlar</Text>
           </TouchableOpacity>
-          <Link className='bg-white rounded-lg items-center justify-center py-5 flex-row text-center' href={"/NotesSummary"}>ÖZETLE</Link>
+          <Link className='bg-white rounded-lg items-center justify-center py-5 flex-row text-center mb-10' href={"/NotesSummary"}>ÖZETLE</Link>
+          <Link className='bg-white rounded-lg items-center justify-center py-5 flex-row text-center' href={"/notes"}>Notlarım</Link>
 
           {/* Çıkış Yap Butonu */}
           <TouchableOpacity
